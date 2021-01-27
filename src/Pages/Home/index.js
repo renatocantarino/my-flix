@@ -1,13 +1,12 @@
-import Menu from "./components/menu";
-import BannerMain from './components/BannerMain'
-import Carousel from './components/Carousel'
-import dadosIniciais from './data/dados_iniciais.json';
+import Menu from '../../components/menu';
+import BannerMain from '../../components/BannerMain'
+import Carousel from '../../components/Carousel'
+import dadosIniciais from '../../data/dados_iniciais.json';
 
-function App() {  
-  return (    
+export default function Home() {
+  return (
     <div>
       <Menu />
-
 
       <BannerMain
         videoTitle={dadosIniciais.categorias[0].titulo}
@@ -22,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+
