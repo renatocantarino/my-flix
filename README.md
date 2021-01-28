@@ -3,6 +3,9 @@
 - ReactJS
 - StyledComponents
 - CI/CD Vercel
+- Hooks
+- Json Server
+- concurrently 
 
 
 
