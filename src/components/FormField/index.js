@@ -1,5 +1,6 @@
-import React from "react";
-import styled, { css } from 'styled-components';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types';
 
 const FormFieldWrapper = styled.div`
   position: relative; 
@@ -17,18 +18,14 @@ Label.Text = styled.span`
   height: 57px;
   position: absolute; 
   top: 0;
-  left: 16px;
-  
+  left: 16px;  
   display: flex;
-  align-items: center;
-  
+  align-items: center;  
   transform-origin: 0% 0%;
   font-size: 18px;
   font-style: normal;
-  font-weight: 300;
-  
-  transition: .1s ease-in-out;
-`;
+  font-weight: 300;  
+  transition: .1s ease-in-out;`;
 
 const Input = styled.input`
   background: #53585D;
@@ -63,24 +60,53 @@ const Input = styled.input`
   `}
 `;
 
-
-
 function FormField({ label, type, name, value, onChange }) {
-    return (
+  const fieldId = `id_${name}`;
+  const isTypeTextarea = type === 'textarea';
+  const tag = isTypeTextarea ? 'textarea' : 'input';
+  const hasValue = Boolean(value.length);
 
-        <div>
-            <label>
-                {label}:
-        <input
-                    type={type}
-                    value={value}
-                    name={name}
-                    onChange={onChange}
-                />
-            </label>
-        </div>
+  return (
+    <FormFieldWrapper>
+      <Label htmlFor={fieldId}>
+        <Input
+          as={tag}
+          id={fieldId}
+          type={type}
+          value={value}
+          name={name}
+          hasValue={hasValue}
+          onChange={onChange}
+        />
 
-    )
+        <Label.Text>
+          {label}
+        </Label.Text>
+      </Label>
+    </FormFieldWrapper>
+
+  )
 }
 
-export default FormField;
+FormField.defaultProps = {
+  type: 'text',
+  value: '',
+  onChange: () => { },
+  suggestions: [],
+};
+
+FormField.propTypes = {
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func
+
+};
+
+
+
+
+
+
+export default FormField

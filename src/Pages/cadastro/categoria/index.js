@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import FormField from '../../../components/FormField'
-
+import Button from '../../../components/Button';
 import Template from '../../../components/Template'
+
 export default function Categoria() {
 
 
@@ -16,10 +17,10 @@ export default function Categoria() {
 
 
     function setValue(chave, valor) {
-        
+
         setValues({
             ...values,
-            [chave]: valor, 
+            [chave]: valor,
         })
     }
     function handleSubmit(infosDoEvento) {
@@ -30,7 +31,7 @@ export default function Categoria() {
         ]);
 
         setValues(valoresIniciais)
-        
+
     }
 
     function handleChange(infosDoEvento) {
@@ -53,8 +54,8 @@ export default function Categoria() {
                 />
 
                 <FormField
-                    label="Descrição:"
-                    type="????"
+                    label="Descrição"
+                    type="textarea"
                     name="descricao"
                     value={values.descricao}
                     onChange={handleChange}
@@ -70,9 +71,9 @@ export default function Categoria() {
                 />
 
 
-                <button>
+                <Button>
                     Cadastrar
-              </button>
+              </Button>
             </form>
 
 
